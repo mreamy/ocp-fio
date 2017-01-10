@@ -15,7 +15,7 @@ ENV fio_version=2.16
 
 RUN set -x \
   && yum -y update \
-  && yum -y --skip-broken install socat gunzip tar \
+  && yum -y --skip-broken install socat tar zlib-dev zlib-devel \
   && yum -y --skip-broken  groupinstall 'Development Tools' \
   && cd /tmp \
   && curl -LsSO https://github.com/axboe/fio/archive/fio-${fio_version}.tar.gz \
@@ -25,8 +25,8 @@ RUN set -x \
   && ./configure \
   && make \
   && make install \
-  && yum -y autoremove gunzip \
   && yum -y groupremove 'Development Tools' \
+  && yum -y purge zlib-dev zlib-devel \
   && yum -y clean all
 
 USER 1001
