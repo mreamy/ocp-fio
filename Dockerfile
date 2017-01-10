@@ -25,6 +25,10 @@ RUN set -x \
   && ./configure \
   && make \
   && make install \
+  && cd .. \
+  && rm -rf fio-fio-${fio_version} \
+  && mkdir -p /fio/{jobs,conf,logs,job-data} \
+  && chmod -R 777 /fio \
   && yum -y groupremove 'Development Tools' \
   && yum -y erase zlib-devel \
   && yum -y clean all
