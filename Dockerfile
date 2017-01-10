@@ -26,7 +26,7 @@ RUN set -x \
   && make \
   && make install \
   && yum -y groupremove 'Development Tools' \
-  && yum -y purge zlib-devel \
+  && yum -y erase zlib-devel \
   && yum -y clean all
 
 USER 1001
