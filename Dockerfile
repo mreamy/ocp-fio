@@ -1,12 +1,11 @@
 FROM centos:7
 
-ENV fio_version=2.16
+ENV fio_version=3.20
 
 RUN set -x \
   && yum -y update \
-  && yum -y --skip-broken install socat tar zlib-devel \
+  && yum -y --skip-broken install socat tar zlib-devel libaio-devel libaio \
   && yum -y --skip-broken  groupinstall 'Development Tools' \
-  && yum -y install libaio-devel \
   && cd /tmp \
   && curl -LsSO https://github.com/axboe/fio/archive/fio-${fio_version}.tar.gz \
   && tar xfvz fio-${fio_version}.tar.gz  \
