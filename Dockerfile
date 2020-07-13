@@ -5,7 +5,7 @@ ENV fio_version=3.7
 RUN set -x \
   && yum -y update \
   && yum -y --skip-broken install socat tar zlib-devel libaio-devel libaio \
-  && yum -y --skip-broken  groupinstall 'Development Tools' \
+  && yum -y --skip-broken  groupinstall 'Development Tools' --setopt=group_package_types=mandatory,default,optional \
   && cd /tmp \
   && curl -LsSO https://github.com/axboe/fio/archive/fio-${fio_version}.tar.gz \
   && tar xfvz fio-${fio_version}.tar.gz  \
