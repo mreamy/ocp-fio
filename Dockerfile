@@ -1,6 +1,6 @@
 FROM centos:7
 
-ENV fio_version=2.16
+ENV fio_version=3.7
 
 RUN set -x \
   && yum -y update \
